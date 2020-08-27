@@ -24,4 +24,4 @@ before_script:
 
 script:
   - pipenv run flake8
-  - pipenv run python manage.py test
+  - pipenv run python src/manage.py test
