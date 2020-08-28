@@ -32,7 +32,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
-DJANGO_APPS = [
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +43,14 @@ DJANGO_APPS = [
 
 THIRD_PART_APPS = []
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    'gestao_rh.apps.core',
+    'gestao_rh.apps.employees',
+    'gestao_rh.apps.documents',
+    'gestao_rh.apps.overtime'
+]
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PART_APPS + PROJECT_APPS
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PART_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
