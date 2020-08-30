@@ -1,7 +1,8 @@
 from django.urls import path
-from gestao_rh.apps.core import views
+from gestao_rh.apps.core.views import home, CompanyCreate
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('new/', CompanyCreate.as_view(), name='company-create')
 ]

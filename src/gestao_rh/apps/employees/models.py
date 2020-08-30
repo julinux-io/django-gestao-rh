@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Employee(models.Model):
-    ENABLED = (
-        (1, True),
-        (0, False)
+    STATUS = (
+        (1, 'Enabled'),
+        (0, 'Disabled')
     )
     name = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -15,7 +15,7 @@ class Employee(models.Model):
                                 on_delete=models.SET_NULL,
                                 null=True, blank=True)
     on_vacation = models.BooleanField()
-    status = models.CharField(max_length=1, choices=ENABLED)
+    status = models.PositiveSmallIntegerField(choices=STATUS, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 

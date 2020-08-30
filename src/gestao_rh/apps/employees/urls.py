@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home
+from gestao_rh.apps.employees import views
 
 urlpatterns = [
-    path('', home, name='employees')
+    path('', views.get_employees, name='employees')
 ]
