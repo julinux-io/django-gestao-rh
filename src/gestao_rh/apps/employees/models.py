@@ -10,7 +10,8 @@ class Employee(models.Model):
     name = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     departments = models.ManyToManyField('core.Department',
-                                         related_name='employee')
+                                         related_name='employee',
+                                         blank=True, null=True)
     company = models.ForeignKey('core.Company',
                                 on_delete=models.SET_NULL,
                                 null=True, blank=True)
