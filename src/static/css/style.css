@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,600&display=swap');
+
+a[href] {
+    text-decoration: none;
+}
+
+.logo-header {
+    font-family: 'Josefin Sans', sans-serif;
+}
+.logo-header a {
+    color: white;
+}
+

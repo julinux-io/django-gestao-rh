@@ -8,6 +8,7 @@ class Employee(models.Model):
         (0, 'Disabled')
     )
     name = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     departments = models.ManyToManyField('core.Department',
                                          related_name='employee',

@@ -1,8 +1,7 @@
 {% extends 'core/index.html' %}
-
 {% block body %}
-<div class="my-3">
-    <form method="POST">
+<div class="mt-3">
+    <form  class="form-horizontal" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Salvar</button>

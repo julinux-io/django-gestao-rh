@@ -1,0 +1,31 @@
+{% extends 'core/index.html' %}
+
+{% block body %}
+<div class="mt-3">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Department</th>
+            <th scope="col">Company</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in object_list %}
+        <tr>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.job_title }}</td>
+            <td>{{ employee.departments.name }}</td>
+            <td>{{ employee.company.name }}</td>
+            <td><a href="{% url 'employees-update' employee.id %}">Edit</a> | <a href="{% url 'employees-delete' employee.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div>
+    Add user
+</div>
+</div>
+{% endblock %}

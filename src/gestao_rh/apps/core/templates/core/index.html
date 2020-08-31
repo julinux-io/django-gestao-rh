@@ -1,21 +1,29 @@
-{% extends 'base.html' %} {% block main %}
-
+{% extends 'base.html' %}
+{% block main %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <span class="navbar-brand mb-0 h1">{{ user.employee.company.name }} | </span>
+    {% if user.employee.company %}
+        <span class="logo-header navbar-brand mb-0 h1"><a href="/">{{ user.employee.company.name }}</a> |</span>
+    {% endif %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
+            {% if user.employee.company %}
+                <a class="nav-item nav-link" href="{% url 'company-update' user.employee.company.id %}">Edit Company</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{% url 'company-create' %}">New Company</a>
+            {% endif %}
+            <a class="nav-item nav-link" href="{% url 'employees-list' %}">Manager Employees</a>
             <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
         </div>
     </div>
-    <form class="form-inline">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
-    </form>
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">{{ user.employee.name }}<span class="sr-only">(current)</span></a>
+    </div>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
 </nav>
+{% block body %}
+{% endblock %}
 {% endblock %}
