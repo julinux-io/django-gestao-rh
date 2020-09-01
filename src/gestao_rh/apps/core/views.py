@@ -3,13 +3,12 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
 
-from gestao_rh.apps.core.models import Company
+from .models import Company
 
 
 @login_required
 def home(request):
-    data = {}
-    data['user'] = request.user
+    data = {'user': request.user}
     return render(request, 'core/index.html', data)
 
 

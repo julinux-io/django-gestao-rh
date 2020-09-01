@@ -17,4 +17,13 @@
     "python.formatting.autopep8Args": [
         "--max-line-length=120"
     ],
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.PyTestArgs": [
+        "--doctest-modules"
+    ]
 }

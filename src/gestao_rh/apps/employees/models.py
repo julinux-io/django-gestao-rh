@@ -12,7 +12,7 @@ class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     departments = models.ManyToManyField('core.Department',
                                          related_name='employee',
-                                         blank=True, null=True)
+                                         blank=True)
     company = models.ForeignKey('core.Company',
                                 on_delete=models.SET_NULL,
                                 null=True, blank=True)
