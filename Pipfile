@@ -8,6 +8,9 @@ flake8 = "*"
 autopep8 = "*"
 pylint = "*"
 pytest = "*"
+requests = "*"
+jupyter = "*"
+requests-ntlm = "*"
 
 [packages]
 django = "*"

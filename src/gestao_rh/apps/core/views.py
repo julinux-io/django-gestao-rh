@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
-from .models import Company
+from .models import Company, Department
 
 
 @login_required
@@ -29,3 +30,11 @@ class CompanyUpdate(UpdateView):
     model = Company
     fields = ['name']
     success_url = reverse_lazy('home')
+
+
+class DepartmentsList(ListView):
+    model = Department
+
+    def get_queryset(self):
+        company = self.request.user.employee.company
+        return Department.objects.filter(company=company)

@@ -22,3 +22,7 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class NewDepartment(models.Model):
+    name = models.CharField(max_length=100)

@@ -1,0 +1,7 @@
+{% extends 'core/index.html' %}
+
+{% block body %}
+    {% for department in object_list %}
+        <h3>{{ department }}</h3>
+    {% endfor %}
+{% endblock %}
