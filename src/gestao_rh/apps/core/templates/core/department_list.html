@@ -4,4 +4,7 @@
     {% for department in object_list %}
         <h3>{{ department }}</h3>
     {% endfor %}
+    <a href="{% url 'departments-create' %}">
+        <button type="submit" class="btn btn-primary">New</button>
+    </a>
 {% endblock %}

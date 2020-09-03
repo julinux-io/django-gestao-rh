@@ -38,3 +38,16 @@ class DepartmentsList(ListView):
     def get_queryset(self):
         company = self.request.user.employee.company
         return Department.objects.filter(company=company)
+
+
+class DepartmentsCreate(CreateView):
+    model = Department
+    fields = ['name']
+    success_url = reverse_lazy('departments-list')
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.company = self.request.user.employee.company
+        obj.save()
+        return super(DepartmentsCreate, self).form_valid(form)
+

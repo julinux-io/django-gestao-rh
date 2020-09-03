@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     home, CompanyCreate, CompanyUpdate,
-    DepartmentsList
+    DepartmentsList, DepartmentsCreate
 )
 
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('companies/new/', CompanyCreate.as_view(), name='company-create'),
     path('companies/update/<int:pk>/', CompanyUpdate.as_view(), name='company-update'),
     path('departments/', DepartmentsList.as_view(), name="departments-list"),
+    path('departments/new/', DepartmentsCreate.as_view(), name='departments-create'),
 ]

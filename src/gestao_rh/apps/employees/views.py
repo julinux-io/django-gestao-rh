@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
 )
-from gestao_rh.apps.employees.models import Employee
+from .models import Employee
 
 
 class EmployeesList(ListView):

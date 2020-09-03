@@ -15,12 +15,12 @@
             {% else %}
                 <a class="nav-item nav-link" href="{% url 'company-create' %}">New Company</a>
             {% endif %}
-            <a class="nav-item nav-link" href="{% url 'employees-list' %}">Manager Employees</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link" href="{% url 'employees-list' %}">Employees</a>
+            <a class="nav-item nav-link" href="{% url 'departments-list' %}">Departments</a>
         </div>
     </div>
     <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">{{ user.employee.name }}<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="/">{{ user.employee.name }}<span class="sr-only">(current)</span></a>
     </div>
     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
 </nav>
