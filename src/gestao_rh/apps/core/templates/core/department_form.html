@@ -1,10 +1,10 @@
 {% extends 'core/index.html' %}
-
+{% load bootstrap %}
 {% block body %}
 <div class="my-3">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|bootstrap }}
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
 {% block main %}
 <div class="row">
     <div class="col-sm"></div>
     <div class="col-sm mt-5"><form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            {{ form.as_p }}
+            {{ form|bootstrap }}
         </div>
         <button type="submit" class="btn btn-primary">Sign in</button>
     </form></div>

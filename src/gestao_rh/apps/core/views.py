@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Company, Department
 
@@ -51,3 +51,13 @@ class DepartmentsCreate(CreateView):
         obj.save()
         return super(DepartmentsCreate, self).form_valid(form)
 
+
+class DepartmentsUpdate(UpdateView):
+    model = Department
+    fields = ['name']
+    success_url = reverse_lazy('departments-list')
+
+
+class DepartmentsDelete(DeleteView):
+    model = Department
+    success_url = reverse_lazy('departments-list')

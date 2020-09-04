@@ -17,6 +17,7 @@ django = "*"
 python-decouple = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+django-bootstrap-form = "*"
 
 [requires]
 python_version = "3.8"

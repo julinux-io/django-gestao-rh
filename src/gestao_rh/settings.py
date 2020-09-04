@@ -40,7 +40,9 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PART_APPS = []
+THIRD_PART_APPS = [
+    'bootstrapform',
+]
 
 PROJECT_APPS = [
     'gestao_rh.apps.core',
