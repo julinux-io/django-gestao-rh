@@ -1,0 +1,11 @@
+{% extends 'core/index.html' %}
+{% load bootstrap %}
+{% block body %}
+<div class="my-3">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock %}
