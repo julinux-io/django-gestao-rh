@@ -1,5 +1,4 @@
 # Gestao RH
 
----
 
-[![Build Status](https://travis-ci.com/juliosaraiva/django-gestao-rh.svg?branch=master)](https://travis-ci.com/juliosaraiva/django-gestao-rh)
+![Flake8 Lint](https://github.com/juliosaraiva/django-gestao-rh/workflows/Flake8%20Lint/badge.svg)
