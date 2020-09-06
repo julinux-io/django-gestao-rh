@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView
 from .models import Document
 
+
 class DocumentsCreate(CreateView):
     model = Document
     fields = ['description', 'filename']

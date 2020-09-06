@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('gestao_rh.apps.core.urls')),
     path('employments/', include('gestao_rh.apps.employees.urls')),
     path('documents/', include('gestao_rh.apps.documents.urls')),
+    path('overtime/', include('gestao_rh.apps.overtime.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

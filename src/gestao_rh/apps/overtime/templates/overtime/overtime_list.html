@@ -1,0 +1,31 @@
+{% extends 'core/index.html' %}
+
+{% block body %}
+<div class="mt-3">
+    <table class="table table-striped">
+    <thead>
+            <tr>
+                <th scope="col">Employee</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Starts</th>
+                <th scope="col">Ends</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for overtime in object_list %}
+            <tr>
+                <td>{{ overtime.employee.name }}</td>
+                <td>{{ overtime }}</td>
+                <td>{{ overtime.starts }}</td>
+                <td>{{ overtime.ends }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!--    <a href="{% url 'departments-create' %}">-->
+<!--        <button type="submit" class="btn btn-primary">New</button>-->
+<!--    </a>-->
+</div>
+{% endblock %}
