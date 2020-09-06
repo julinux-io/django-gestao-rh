@@ -19,4 +19,4 @@ jobs:
           pipenv sync --dev
       - name: Lint with flake8
         run: |
-          flake8
+          pipenv run flake8
