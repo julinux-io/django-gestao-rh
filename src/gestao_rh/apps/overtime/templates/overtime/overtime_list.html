@@ -19,13 +19,17 @@
                 <td>{{ overtime }}</td>
                 <td>{{ overtime.starts }}</td>
                 <td>{{ overtime.ends }}</td>
+                <td>
+                    <a href="{% url 'overtime-update' overtime.id %}">Edit</a> |
+                    <a href="{% url 'overtime-delete' overtime.id %}">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
-<!--    <a href="{% url 'departments-create' %}">-->
-<!--        <button type="submit" class="btn btn-primary">New</button>-->
-<!--    </a>-->
+    <a href="{% url 'overtime-create' %}">
+        <button type="submit" class="btn btn-primary">Add overtime</button>
+    </a>
 </div>
 {% endblock %}
