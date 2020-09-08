@@ -43,6 +43,7 @@ DEFAULT_APPS = [
 
 THIRD_PART_APPS = [
     'bootstrapform',
+    'django_extensions',
 ]
 
 PROJECT_APPS = [

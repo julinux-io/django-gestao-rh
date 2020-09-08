@@ -11,6 +11,7 @@ pytest = "*"
 requests = "*"
 jupyter = "*"
 requests-ntlm = "*"
+django-extensions = "*"
 
 [packages]
 django = "*"

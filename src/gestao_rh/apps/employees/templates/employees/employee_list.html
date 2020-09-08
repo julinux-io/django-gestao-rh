@@ -17,7 +17,7 @@
         <tr>
             <td>{{ employee.name }}</td>
             <td>{{ employee.job_title }}</td>
-            <td>{{ employee.departments.name }}</td>
+            <td>{{ employee.departments.last }}</td>
             <td>{{ employee.company.name }}</td>
             <td><a href="{% url 'employees-update' employee.id %}">Edit</a> | <a href="{% url 'employees-delete' employee.id %}">Delete</a></td>
         </tr>
