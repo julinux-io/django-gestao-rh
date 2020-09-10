@@ -27,7 +27,6 @@ class OvertimeCreate(CreateView):
 class OvertimeUpdate(UpdateView):
     model = Overtime
     form_class = OvertimeForm
-    success_url = reverse_lazy('overtime-list')
 
     def get_form_kwargs(self):
         kwargs = super(OvertimeUpdate, self).get_form_kwargs()

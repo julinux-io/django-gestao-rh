@@ -9,6 +9,7 @@
                 <th scope="col">Reason</th>
                 <th scope="col">Starts</th>
                 <th scope="col">Ends</th>
+                <th scope="col">Interval</th>
                 <th scope="col">Options</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                 <td>{{ overtime }}</td>
                 <td>{{ overtime.starts }}</td>
                 <td>{{ overtime.ends }}</td>
+                <td>{{ overtime.interval }}</td>
                 <td>
                     <a href="{% url 'overtime-update' overtime.id %}">Edit</a> |
                     <a href="{% url 'overtime-delete' overtime.id %}">Delete</a>

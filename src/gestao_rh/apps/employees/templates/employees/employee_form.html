@@ -53,7 +53,7 @@
                 <td>{{ overtime.reason }}</td>
                 <td>{{ overtime.starts }}</td>
                 <td>{{ overtime.ends }}</td>
-                <td><a href="{% url 'overtime-delete' overtime.id %}">Delete</a></td>
+                <td><a href="{% url 'overtime-update' overtime.id %}">Edit</a> | <a href="{% url 'overtime-delete' overtime.id %}">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
