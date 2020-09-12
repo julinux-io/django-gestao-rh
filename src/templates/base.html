@@ -13,6 +13,10 @@
     <title>{% block title %} {% endblock %}</title>
   </head>
   <body>
-    <div class="container-fluid">{% block main %} {% endblock %}</div>
+    <div class="container-fluid">
+      {% block main %} {% endblock %}
+    </div>
+    {% block static %}
+    {% endblock %}
   </body>
 </html>
