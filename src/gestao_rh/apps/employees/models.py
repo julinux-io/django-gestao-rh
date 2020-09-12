@@ -21,9 +21,13 @@ class Employee(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
-    # @property
-    # def overtime_total(self):
-    #     return self.
+    @property
+    def overtime_total(self):
+        return self.overtime_set.annotate(
+            interval=models.ExpressionWrapper(
+                models.F('ends') - models.F('starts'), output_field=models.DateTimeField()
+            )
+        ).aggregate(models.Sum('interval')).get('interval__sum')
 
     def __str__(self):
         return self.name
