@@ -148,3 +148,4 @@ dmypy.json
 .pytype/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+aws_secretkey.csv
