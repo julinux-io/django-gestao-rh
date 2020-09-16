@@ -1,5 +1,7 @@
+import csv
 from django.urls import reverse_lazy
-from django.views.generic import ListView
+from django.http import HttpResponse
+from django.views.generic import ListView, View
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from .models import Overtime
 from .forms import OvertimeForm
@@ -37,3 +39,19 @@ class OvertimeUpdate(UpdateView):
 class OvertimeDelete(DeleteView):
     model = Overtime
     success_url = reverse_lazy('overtime-list')
+
+
+class ReportCSV(View):
+    def get(self, request):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=report.csv'
+
+        company = request.user.employee.company
+
+        overtimes = Overtime.objects.filter(employee__company=company)
+        writer = csv.writer(response)
+        writer.writerow(['reason', 'employee', 'starts', 'ends', 'interval'])
+        for overtime in overtimes:
+            writer.writerow([overtime.reason, overtime.employee, overtime.starts,
+                             overtime.ends, overtime.get_interval])
+        return response

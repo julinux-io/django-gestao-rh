@@ -8,6 +8,10 @@ class Overtime(models.Model):
     starts = models.DateTimeField()
     ends = models.DateTimeField()
 
+    @property
+    def get_interval(self):
+        return self.ends - self.starts
+
     def get_absolute_url(self):
         return reverse('employees-update', args=[self.employee.id])
 
