@@ -3,6 +3,9 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic import ListView, View
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
+
+import openpyxl
+
 from .models import Overtime
 from .forms import OvertimeForm
 
@@ -54,4 +57,29 @@ class ReportCSV(View):
         for overtime in overtimes:
             writer.writerow([overtime.reason, overtime.employee, overtime.starts,
                              overtime.ends, overtime.get_interval])
+        return response
+
+
+class ReportXLS(View):
+    def get(self, request):
+        response = HttpResponse(content_type='application/vnd.ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="report.xls"'
+
+        wb = openpyxl.Workbook()
+        ws = wb.create_sheet('overtimes')
+        del wb['Sheet']
+
+        columns = ['Id', 'Reason', 'Employee', 'Starts', 'Ends', 'Interval']
+        ws.append(columns)
+
+        company = request.user.employee.company
+        overtimes = Overtime.objects.filter(employee__company=company)
+
+        for overtime in overtimes:
+            overtime_list = [overtime.id, overtime.reason, overtime.employee.name,
+                             overtime.starts, overtime.ends, overtime.get_interval]
+            ws.append(overtime_list)
+
+        wb.save(response)
+
         return response

@@ -8,6 +8,7 @@ flake8 = "*"
 autopep8 = "*"
 pylint = "*"
 jupyter = "*"
+comlipy = "*"
 
 [packages]
 django = "*"
@@ -17,6 +18,7 @@ psycopg2 = "*"
 django-bootstrap-form = "*"
 django-extensions = "*"
 xhtml2pdf = "*"
+openpyxl = "*"
 
 [requires]
 python_version = "3.8"

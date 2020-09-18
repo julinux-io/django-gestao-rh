@@ -30,7 +30,8 @@
         </tbody>
     </table>
 
-    <a href="{% url 'overtime-create' %}">Add overtime</a>
-    <a href="{% url 'overtime-report-csv' %}">Report</a>
+    <a class="btn btn-primary" href="{% url 'overtime-create' %}">Add overtime</a>
+    <a class="btn btn-primary" href="{% url 'overtime-report-csv' %}">Report csv</a>
+    <a class="btn btn-primary" href="{% url 'overtime-report-xls' %}">Report xls</a>
 </div>
 {% endblock %}
