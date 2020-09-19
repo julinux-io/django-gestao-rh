@@ -1,6 +1,7 @@
 FROM python:3.8-alpine
 
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PIPENV_VENV_IN_PROJECT 1
 
 RUN pip install --upgrade pip
@@ -15,10 +16,8 @@ RUN chown djangoapp:djangoapp /app
 
 WORKDIR /app
 
-COPY ./Pipfile* /app/
-COPY ./src/ /app/
-
-RUN chown -R djangoapp:djangoapp /app
+COPY --chown=djangoapp ./Pipfile* /app/
+COPY --chown=djangoapp ./src/ /app/
 
 RUN mkdir -p /etc/uwsgi/vassals
 COPY ./contrib/gestao_rh.ini /etc/uwsgi/vassals/
