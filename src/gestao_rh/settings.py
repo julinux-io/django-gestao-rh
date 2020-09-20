@@ -44,6 +44,7 @@ THIRD_PART_APPS = [
     'rest_framework',
     'bootstrapform',
     'django_extensions',
+    'rest_framework.authtoken',
 ]
 
 PROJECT_APPS = [
@@ -142,3 +143,11 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+
+# Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
