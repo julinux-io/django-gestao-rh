@@ -19,6 +19,7 @@ django-bootstrap-form = "*"
 django-extensions = "*"
 xhtml2pdf = "*"
 openpyxl = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"

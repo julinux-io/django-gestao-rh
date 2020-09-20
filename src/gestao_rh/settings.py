@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import os
 from pathlib import Path
 from decouple import config, Csv
 from dj_database_url import parse as dburl
@@ -42,6 +41,7 @@ DEFAULT_APPS = [
 ]
 
 THIRD_PART_APPS = [
+    'rest_framework',
     'bootstrapform',
     'django_extensions',
 ]
@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static/'
 
 # Media files (Uploads)
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 

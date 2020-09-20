@@ -10,7 +10,7 @@ DBPASSWORD='supersecretpassword'
 DBHOST='db'
 DBURL="postgres://${DBUSER}:${DBPASSWORD}@${DBHOST}:5432/${DBNAME}"
 
-DBNAME=$DBNAME DBUSER=$DBUSER DBPASSWORD=$DBPASSWORD \
+DEBUG=$DEBUG DBNAME=$DBNAME DBUSER=$DBUSER DBPASSWORD=$DBPASSWORD \
 DBHOST=$DBHOST DBURL=$DBURL docker-compose up --detach --build
 
 echo -e "Your .env file was created!

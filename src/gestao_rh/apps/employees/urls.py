@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (
+from gestao_rh.apps.employees.views import (
     EmployeesList, EmployeesUpdate, EmployeesDelete, EmployeesCreate, Pdf
 )
 

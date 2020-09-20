@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Employee
+from gestao_rh.apps.employees.models import Employee
 
 
 admin.site.register(Employee)
