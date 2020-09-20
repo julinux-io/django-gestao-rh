@@ -13,7 +13,7 @@ DBURL="postgres://${DBUSER}:${DBPASSWORD}@${DBHOST}:5432/${DBNAME}"
 DEBUG=$DEBUG DBNAME=$DBNAME DBUSER=$DBUSER DBPASSWORD=$DBPASSWORD \
 DBHOST=$DBHOST DBURL=$DBURL docker-compose up --detach --build
 
-if [ $? == 0 ]; then
+if [ $? -eq 0 ]; then
     echo -e "Your .env file was created!
     SECRET_KEY=${SECRET_KEY}
     DEBUG=${DEBUG}
