@@ -9,9 +9,12 @@ DBUSER='postgres'
 DBPASSWORD='supersecretpassword'
 DBHOST='db'
 DBURL="postgres://${DBUSER}:${DBPASSWORD}@${DBHOST}:5432/${DBNAME}"
+CELERY_BROKER_URL='redis://redis:6379'
 
 DEBUG=$DEBUG DBNAME=$DBNAME DBUSER=$DBUSER DBPASSWORD=$DBPASSWORD \
-DBHOST=$DBHOST DBURL=$DBURL docker-compose up --detach --build
+DBHOST=$DBHOST DBURL=$DBURL \
+CELERY_BROKER_URL=$CELERY_BROKER_URL \
+docker-compose up --detach --build
 
 if [ $? -eq 0 ]; then
     echo -e "Your .env file was created!

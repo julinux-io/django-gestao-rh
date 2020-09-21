@@ -20,6 +20,9 @@ django-extensions = "*"
 xhtml2pdf = "*"
 openpyxl = "*"
 djangorestframework = "*"
+celery = "*"
+django-celery-results = "*"
+redis = "*"
 
 [requires]
 python_version = "3.8"
