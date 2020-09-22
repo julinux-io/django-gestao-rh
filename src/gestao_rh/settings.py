@@ -45,6 +45,7 @@ THIRD_PART_APPS = [
     'bootstrapform',
     'django_extensions',
     'rest_framework.authtoken',
+    'django_celery_results',
 ]
 
 PROJECT_APPS = [
@@ -151,3 +152,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication'
     ]
 }
+
+
+# Celery Settings
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
