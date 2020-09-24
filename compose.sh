@@ -1,19 +1,16 @@
 #!/usr/bin/bash
-SECRET_KEY=`.venv/Scripts/python.exe commands/gen_secret.py`
-DEBUG='True'
-TIME_ZONE='America/Sao_Paulo'
-ALLOWED_HOSTS='127.0.0.1,localhost'
-LANGUAGE_CODE='pt-BR'
-DBNAME='gestao'
-DBUSER='postgres'
-DBPASSWORD='supersecretpassword'
-DBHOST='db'
-DBURL="postgres://${DBUSER}:${DBPASSWORD}@${DBHOST}:5432/${DBNAME}"
-CELERY_BROKER_URL='redis://redis:6379'
+export SECRET_KEY=`.venv/Scripts/python.exe commands/gen_secret.py`
+export DEBUG='True'
+export TIME_ZONE='America/Sao_Paulo'
+export ALLOWED_HOSTS='127.0.0.1,localhost'
+export LANGUAGE_CODE='pt-BR'
+export DBNAME='gestao'
+export DBUSER='postgres'
+export DBPASSWORD='supersecretpassword'
+export DBHOST='db'
+export DBURL="postgres://${DBUSER}:${DBPASSWORD}@${DBHOST}:5432/${DBNAME}"
+export CELERY_BROKER_URL='redis://redis:6379'
 
-DEBUG=$DEBUG DBNAME=$DBNAME DBUSER=$DBUSER DBPASSWORD=$DBPASSWORD \
-DBHOST=$DBHOST DBURL=$DBURL \
-CELERY_BROKER_URL=$CELERY_BROKER_URL \
 docker-compose up --detach --build
 
 if [ $? -eq 0 ]; then

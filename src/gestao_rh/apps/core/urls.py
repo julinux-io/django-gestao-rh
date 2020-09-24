@@ -2,12 +2,14 @@ from django.urls import path
 from .views import (
     home, CompanyCreate, CompanyUpdate,
     DepartmentsList, DepartmentsCreate,
-    DepartmentsUpdate, DepartmentsDelete
+    DepartmentsUpdate, DepartmentsDelete,
+    celery
 )
 
 
 urlpatterns = [
     path('', home, name='home'),
+    path('celery/', celery, name='celery'),
     path('companies/new/', CompanyCreate.as_view(), name='company-create'),
     path('companies/edit/<int:pk>/', CompanyUpdate.as_view(), name='company-update'),
     path('departments/', DepartmentsList.as_view(), name="departments-list"),

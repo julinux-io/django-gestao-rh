@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -5,6 +6,13 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Company, Department
+
+from .tasks import send_report
+
+
+def celery(request):
+    send_report.delay()
+    return HttpResponse('Task added to queue')
 
 
 @login_required
