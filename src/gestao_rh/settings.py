@@ -46,6 +46,7 @@ THIRD_PART_APPS = [
     'django_extensions',
     'rest_framework.authtoken',
     'django_celery_results',
+    'django_celery_beat',
 ]
 
 PROJECT_APPS = [
