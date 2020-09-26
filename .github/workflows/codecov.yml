@@ -21,16 +21,17 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@master
       with:
-        python-version: 3.7
+        python-version: 3.8
     - name: Generate coverage report
       run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov=./ --cov-report=xml
+        python -m pip install pipenv
+        pipenv --three
+        pipenv sync
+        pipenv sync --dev
+        pipenv run coverage xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
         files: ./coverage1.xml,./coverage2.xml
         directory: ./coverage/reports/

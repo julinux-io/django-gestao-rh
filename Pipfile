@@ -9,6 +9,7 @@ autopep8 = "*"
 pylint = "*"
 jupyter = "*"
 comlipy = "*"
+coverage = "*"
 
 [packages]
 django = "*"
