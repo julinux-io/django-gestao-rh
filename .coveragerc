@@ -1,0 +1,12 @@
+[run]
+source = ./src/
+omit =
+    */.venv/*
+    */migrations/*
+    */tests/*
+
+[report]
+fail_under = 60
+include = *.py
+show_missing = True
+skip_covered = True

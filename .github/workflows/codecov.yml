@@ -1,4 +1,5 @@
 name: Codecov
+
 on:
   push:
     branches:
@@ -16,26 +17,30 @@ jobs:
     env:
       OS: ${{ matrix.os }}
       PYTHON: '3.8'
+      PIPENV_VENV_IN_PROJECT: 1
+      SECRET_KEY: ${{ secrets.CODECOV_TOKEN }}
     steps:
     - uses: actions/checkout@master
     - name: Setup Python
       uses: actions/setup-python@master
       with:
-        python-version: 3.7
+        python-version: 3.8
     - name: Generate coverage report
       run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov=./ --cov-report=xml
+        cp contrib/env-sample ./.env
+        python -m pip install pipenv
+        pipenv --python 3.8
+        pipenv sync
+        pipenv sync --dev
+        pipenv run coverage run src/manage.py test
+        pipenv run coverage xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
-        files: ./coverage1.xml,./coverage2.xml
         directory: ./coverage/reports/
         flags: unittests
         env_vars: OS,PYTHON
         name: codecov-umbrella
         fail_ci_if_error: true
-        path_to_write_report: ./coverage/codecov_report.gz
+        path_to_write_report: ./coverage.xml
