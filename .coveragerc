@@ -2,6 +2,8 @@
 source = ./src/
 omit =
     */.venv/*
+    */migrations/*
+    */tests/*
 
 [report]
 fail_under = 60
