@@ -3,6 +3,7 @@ FROM python:3.8-alpine
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PIPENV_VENV_IN_PROJECT 1
+ENV PATH ./.venv/bin:$PATH
 
 RUN pip install --upgrade pip
 RUN pip install pipenv
@@ -26,7 +27,8 @@ USER djangoapp
 
 RUN pipenv --python 3.8
 RUN pipenv sync
-RUN pipenv install uwsgi
+RUN /app/.venv/bin/pip3 install --upgrade pip
+RUN /app/.venv/bin/pip3 install uwsgi
 
 RUN mkdir /app/log
 

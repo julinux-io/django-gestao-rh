@@ -20,16 +20,20 @@ services:
     volumes:
       - "static_volume:/app/static"
       - "media_volume:/app/media"
-    environment:
-      SECRET_KEY: "${SECRET_KEY}"
-      DEBUG: "${DEBUG}"
-      ALLOWED_HOSTS: "${ALLOWED_HOSTS}"
-      DATABASE_URL: "${DBURL}"
-      TIME_ZONE: "${TIME_ZONE}"
-      LANGUAGE_CODE: "${LANGUAGE_CODE}"
-      CELERY_BROKER_URL: "${CELERY_BROKER_URL}"
+    env_file:
+      - ./.env
     depends_on:
       - db
+
+  celery:
+    build:
+      context: .
+    env_file:
+      - ./.env
+    command: >
+      celery -A gestao_rh worker -l info -B --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    depends_on:
+      - app_gestao
 
   db:
     image: postgres:latest
