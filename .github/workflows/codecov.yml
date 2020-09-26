@@ -27,7 +27,7 @@ jobs:
         python-version: 3.8
     - name: Generate coverage report
       run: |
-        ls -lha .
+        cp contrib/env-sample ./.env
         python -m pip install pipenv
         pipenv --python 3.8
         pipenv sync
