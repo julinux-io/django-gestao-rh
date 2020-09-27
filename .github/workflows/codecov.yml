@@ -32,15 +32,15 @@ jobs:
         pipenv --python 3.8
         pipenv sync
         pipenv sync --dev
-        pipenv run coverage run src/manage.py test
+        cd src/
+        pipenv run coverage run manage.py test
         pipenv run coverage xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        file: ./coverage.xml
-        directory: ./coverage/reports/
+        file: ./src/coverage.xml
         flags: unittests
         env_vars: OS,PYTHON
         name: codecov-umbrella
         fail_ci_if_error: true
-        path_to_write_report: ./coverage.xml
+        path_to_write_report: ./src/coverage.xml
