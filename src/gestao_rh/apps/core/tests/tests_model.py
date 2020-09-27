@@ -13,5 +13,6 @@ class DepartmentModelTest(TestCase):
     def setUp(self):
         company = Company.objects.create(name='Vespene')
         self.department = Department.objects.create(name='IT', company=company)
+
     def test_str(self):
         self.assertEqual('IT', str(self.department))
