@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-export SECRET_KEY=`.venv/Scripts/python.exe commands/gen_secret.py`
+export SECRET_KEY=`.venv/bin/python.exe commands/gen_secret.py`
 export DEBUG='True'
 export TIME_ZONE='America/Sao_Paulo'
 export ALLOWED_HOSTS='127.0.0.1,localhost'
