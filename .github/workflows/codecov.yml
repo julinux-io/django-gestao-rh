@@ -19,7 +19,6 @@ jobs:
       PYTHON: '3.8'
       PIPENV_VENV_IN_PROJECT: 1
       SECRET_KEY: ${{ secrets.CODECOV_TOKEN }}
-      DATABASE_URL: 'sqlite:///db.sqlite3'
     steps:
     - uses: actions/checkout@master
     - name: Setup Python
