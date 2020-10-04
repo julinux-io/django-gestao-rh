@@ -1,4 +1,4 @@
-# Gestao RH
+# Django Gestao RH
 
 
 ![lint](https://github.com/juliosaraiva/django-gestao-rh/workflows/lint/badge.svg)
@@ -6,8 +6,19 @@
 
 
 # Setup
-The script `compose.sh` there is everything that needs to run successfully this project.
+The script `compose.sh` there is everything that needs to run successfully this project. It accept a parameter `down` if you would like to destroy all services.
+
+Up all services
+```sh
+$ ./compose.sh
+```
+
+Down all services
+```sh
+$ ./compose down
+```
+
 
 ```
-$ ./compose.sh
+$ docker-compose exec app_gestao pipenv run python manage.py collectstatic
 ```
