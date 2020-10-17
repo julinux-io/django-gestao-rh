@@ -19,6 +19,8 @@ $ ./compose down
 ```
 
 
+Run collectstatic
+
 ```
 $ docker-compose exec app_gestao pipenv run python manage.py collectstatic
 ```
