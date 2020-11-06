@@ -3,6 +3,7 @@
 
 ![lint](https://github.com/juliosaraiva/django-gestao-rh/workflows/lint/badge.svg)
 [![codecov](https://codecov.io/gh/juliosaraiva/django-gestao-rh/branch/master/graph/badge.svg)](https://codecov.io/gh/juliosaraiva/django-gestao-rh)
+[![Updates](https://pyup.io/repos/github/juliosaraiva/django-gestao-rh/shield.svg)](https://pyup.io/repos/github/juliosaraiva/django-gestao-rh/)
 
 
 # Setup
