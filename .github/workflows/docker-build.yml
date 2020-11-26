@@ -1,0 +1,5 @@
+name: 'Gestao RH'
+description: 'Gestao RH feito em Django'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
