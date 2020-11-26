@@ -1,3 +1,8 @@
+on:
+  push:
+    branches:
+      - 'master'
+
 name: 'Gestao RH'
 description: 'Gestao RH feito em Django'
 runs:
