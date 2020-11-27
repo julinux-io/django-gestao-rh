@@ -17,6 +17,7 @@ jobs:
           registry: docker.pkg.github.com 
           repository: juliosaraiva/django-gestao-rh/${{ env.CONTAINER_NAME }}
           push: true
+          tag_with_ref: true
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
@@ -24,3 +25,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: julinux/${{ env.CONTAINER_NAME }}
           push: true
+          tag_with_ref: true
