@@ -1,6 +1,10 @@
 name: Publish Docker Image
 
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
+  
 
 jobs:
   push_to_registry:
@@ -17,7 +21,7 @@ jobs:
           registry: docker.pkg.github.com 
           repository: juliosaraiva/django-gestao-rh/${{ env.CONTAINER_NAME }}
           push: true
-          tags: latest
+          tags: ${{ GITHUB_REF }}
           tag_with_ref: true
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
