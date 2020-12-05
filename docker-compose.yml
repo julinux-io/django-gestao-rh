@@ -13,7 +13,7 @@ services:
       - app_gestao
 
   app_gestao:
-    image: docker.pkg.github.com/juliosaraiva/django-gestao-rh/gestao-rh:latest
+    image: docker.pkg.github.com/vespene/django-gestao-rh/gestao-rh:latest
     ports:
       - "8000:8000"
     volumes:
