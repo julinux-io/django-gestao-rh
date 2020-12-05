@@ -1,9 +1,6 @@
 name: Tests
 
 on:
-  push:
-    branches:
-      - 'master'
   pull_request:
     branches:
       - 'master'
@@ -24,8 +21,7 @@ jobs:
           pipenv sync
           pipenv sync --dev
       - name: Lint with flake8
-        run: |
-          pipenv run flake8
+        run: pipenv run flake8
   run_coverage:
     runs-on: ${{ matrix.os }}
     strategy:
