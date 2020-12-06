@@ -38,6 +38,12 @@ jobs:
           cd src/
           pipenv run coverage run manage.py test
           pipenv run coverage xml
+      - name: Upload Test Coverage
+        uses: actions/upload-artifact@v1
+        with:
+          name: coverage
+          path: ./src/coverage.xml
+        
   build:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -64,5 +70,21 @@ jobs:
           push: true
           tags: latest
           tag_with_ref: true
-
-
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: ./src/
+      - name: Upload Coverage to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./src/coverage.xml
+          flags: unittests
+          env_vars: OS, PYTHON
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          path_to_write_report: ./src/coverage.xml
+  # staging:
+  #   if: github.event_name == 'push'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
