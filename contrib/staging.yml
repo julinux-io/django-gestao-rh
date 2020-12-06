@@ -1,0 +1,37 @@
+---
+- name: Staging
+  hosts: all
+  vars:
+    registry: docker.pkg.github.com
+    container_name: gestao-rh
+    image_name: "{{ registry }}/vespene/{{ containe_name }}"
+
+  tasks:
+    - name: Generate SECRET_KEY
+      shell: openssl rand -base64 32
+      register: output
+    - name: Docker Login on {{ registry }} 
+      docker_login:
+        registry: "{{ registry }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+    - name: Kill Container {{ container_name }} if exists
+      docker_container:
+        name: "{{ container_name }}"
+        state: absent
+    - name: Remove image from cache
+      docker_image:
+        name: "{{ image_name }}"
+        state: absent
+    - name: Create container {{ container_name }}
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        pull: "yes"
+        env:
+          SECRET_KEY: "{{ output.stout }}"
+          ALLOWED_HOSTS: "{{ allowed_hosts }}"
+          DEBUG: "False"
+        published_ports:
+          - "7002:8000"
+
