@@ -101,6 +101,8 @@ jobs:
       - name: Decrypt SSH Key
         run: |
           gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
+      - name: Set mode to SSH Key
+        run: chmod 600 contrib/id_rsa.deploy
       - name: Deploy to Staging
         run: |
           ansible-playbook -i contrib/inventory --private-key=contrib/id_rsa.deploy -e "username=${{ github.actor }} password=${{ secrets.GITHUB_TOKEN }}" contrib/staging.yml
