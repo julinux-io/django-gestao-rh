@@ -3,15 +3,3 @@
 
 schedule: ''
 update: false
-Update: all
-Search: True
-Pin: True
-Default Branch: master
-Branch pre-fix: pyup-
-Close PRs: True
-Label PRs: False
-Update hashes: True
-requirements:
-  - Pipfile
-  - Pipfile.lock
-
