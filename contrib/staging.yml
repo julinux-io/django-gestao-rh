@@ -27,9 +27,9 @@
       docker_container:
         name: "{{ container_name }}"
         image: "{{ image_name }}"
-        pull: "yes"
+        pull: yes
         env:
-          SECRET_KEY: "{{ output.stout }}"
+          SECRET_KEY: "{{ output.stdout }}"
           ALLOWED_HOSTS: "{{ allowed_hosts }}"
           DEBUG: "False"
         published_ports:
