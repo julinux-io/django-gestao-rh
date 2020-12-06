@@ -4,7 +4,7 @@
   vars:
     registry: docker.pkg.github.com
     container_name: gestao-rh
-    image_name: "{{ registry }}/vespene/django-gestao-rh/{{ containe_name }}"
+    image_name: "{{ registry }}/vespene/django-gestao-rh/{{ container_name }}:dev"
 
   tasks:
     - name: Generate SECRET_KEY
