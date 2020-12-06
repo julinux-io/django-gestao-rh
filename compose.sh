@@ -20,17 +20,17 @@ export CODECOV_TOKEN=""
 
 if [ "$1" = "down" ]; then
   docker-compose $1
+  exit 0
 else
   docker-compose up --detach --build
-
   if [ $? -eq 0 ]; then
-      echo -e "Your .env file was created!
-      SECRET_KEY=${SECRET_KEY}
-      DEBUG=${DEBUG}
-      ALLOWED_HOSTS=${ALLOWED_HOSTS}
-      LANGUAGE_CODE=${LANGUAGE_CODE}
-      TIME_ZONE=${TIME_ZONE}
-      DATABASE_URL=${DBURL}
-      "
+    echo -e "Your .env file was created!
+    SECRET_KEY=${SECRET_KEY}
+    DEBUG=${DEBUG}
+    ALLOWED_HOSTS=${ALLOWED_HOSTS}
+    LANGUAGE_CODE=${LANGUAGE_CODE}
+    TIME_ZONE=${TIME_ZONE}
+    DATABASE_URL=${DBURL}
+    "
   fi
 fi
