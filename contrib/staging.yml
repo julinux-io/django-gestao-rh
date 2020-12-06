@@ -22,16 +22,15 @@
     - name: Remove image from cache
       docker_image:
         name: "{{ image_name }}"
-        state: absent
+        pull: yes
     - name: Create container {{ container_name }}
       docker_container:
         name: "{{ container_name }}"
         image: "{{ image_name }}"
-        pull: yes
         env:
           SECRET_KEY: "{{ output.stdout }}"
           ALLOWED_HOSTS: "{{ allowed_hosts }}"
-          DEBUG: "False"
+          DEBUG: "True"
         published_ports:
           - "7002:8000"
 
