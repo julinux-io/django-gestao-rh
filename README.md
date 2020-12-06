@@ -3,7 +3,7 @@
 
 ![CI](https://github.com/vespene/django-gestao-rh/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/juliosaraiva/django-gestao-rh/branch/master/graph/badge.svg)](https://codecov.io/gh/juliosaraiva/django-gestao-rh)
-[![Updates](https://pyup.io/repos/github/juliosaraiva/django-gestao-rh/shield.svg)](https://pyup.io/repos/github/juliosaraiva/django-gestao-rh/)
+[![Updates](https://pyup.io/repos/github/vespene/django-gestao-rh/shield.svg)](https://pyup.io/repos/github/vespene/django-gestao-rh/)
 
 
 # Setup
