@@ -59,7 +59,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: vespene/${{ env.CONTAINER_NAME }}
+          repository: vespene/django-gestao-rh/${{ env.CONTAINER_NAME }}
           push: true
           tags: latest
           tag_with_ref: true
