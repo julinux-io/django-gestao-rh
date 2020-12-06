@@ -97,13 +97,13 @@ jobs:
           sudo apt install ansible -y
       - name: Decrypt Inventory File
         run: |
-          gpg --quiet --batch --yes --decrypt\
-          --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}"\
+          gpg --quiet --batch --yes --decrypt \
+          --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" \
           --output $HOME/contrib/inventory contrib/inventory.gpg
       - name: Decrypt SSH Key
         run: |
-          gpg --quiet --batch --yes --decrypt\
-          --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}"\
+          gpg --quiet --batch --yes --decrypt \
+          --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" \
           --output $HOME/contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
       - name: Deploy to Staging
         run: |
