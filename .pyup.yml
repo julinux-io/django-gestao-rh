@@ -15,4 +15,3 @@ assignees:
   - juliosaraiva
 requirements:
   - Pipfile
-  - Pipfile.lock
