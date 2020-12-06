@@ -19,7 +19,7 @@
       docker_container:
         name: "{{ container_name }}"
         state: absent
-    - name: Remove image from cache
+    - name: Pull from registry
       docker_image:
         name: "{{ image_name }}"
         pull: yes
