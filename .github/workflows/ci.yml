@@ -99,13 +99,13 @@ jobs:
         run: |
           gpg --quiet --batch --yes --decrypt \
           --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" \
-          --output $HOME/contrib/inventory contrib/inventory.gpg
+          --output ./contrib/inventory contrib/inventory.gpg
       - name: Decrypt SSH Key
         run: |
           gpg --quiet --batch --yes --decrypt \
           --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" \
-          --output $HOME/contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
+          --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
       - name: Deploy to Staging
         run: |
-          ansible-playbook -i contrib/inventory --private-key=contrib/id_rsa.deploy\
+          ansible-playbook -i contrib/inventory --private-key=contrib/id_rsa.deploy \
           -e "username=${{ github.actor }} password=${{ secrets.GITHUB_TOKEN }}" contrib/staging.yml
