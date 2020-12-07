@@ -86,9 +86,11 @@ jobs:
           fail_ci_if_error: true
           path_to_write_report: ./src/coverage.xml
   staging:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     needs: build
+    env:
+      PASSPHRASE: ${{ secrets.INVENTORY_PASSPHRASE }}
     steps:
       - uses: actions/checkout@v2
       - name: Install Ansible
@@ -97,10 +99,10 @@ jobs:
           sudo apt install ansible -y
       - name: Decrypt Inventory File
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" --output ./contrib/inventory contrib/inventory.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="${{ PASSPHRASE }}" --output ./contrib/inventory contrib/inventory.gpg
       - name: Decrypt SSH Key
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.INVENTORY_PASSPHRASE }}" --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="${{ PASSPHRASE }}" --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
       - name: Set mode to SSH Key
         run: chmod 600 contrib/id_rsa.deploy
       - name: Deploy to Staging
