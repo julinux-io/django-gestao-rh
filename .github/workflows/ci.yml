@@ -99,10 +99,10 @@ jobs:
           sudo apt install ansible -y
       - name: Decrypt Inventory File
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="${{ PASSPHRASE }}" --output ./contrib/inventory contrib/inventory.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output ./contrib/inventory contrib/inventory.gpg
       - name: Decrypt SSH Key
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="${{ PASSPHRASE }}" --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output ./contrib/id_rsa.deploy contrib/id_rsa.deploy.gpg
       - name: Set mode to SSH Key
         run: chmod 600 contrib/id_rsa.deploy
       - name: Deploy to Staging
