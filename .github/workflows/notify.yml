@@ -1,0 +1,16 @@
+name: Notify on release
+
+on:
+  registry_package:
+    types: [published, updated]
+
+jobs:
+  slack-message:
+    runs-on: ubuntu-20.04
+    env:
+      repo_pkgs: https://github.com/orgs/vespene/packages?repo_name=django-gestao-rh
+    steps:
+      - name: Slack Message
+        run: |
+          curl -X POST -H 'Content-Type: application/json' --data '{"text": "The Docker Image was updated and released on ${{ GITHUB_REF }} <${{ repo_pkgs }}| Packages Available>"}' ${{ SLACK_WEBHOOK }}
+      
