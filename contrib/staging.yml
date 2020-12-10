@@ -31,6 +31,7 @@
           SECRET_KEY: "{{ output.stdout }}"
           ALLOWED_HOSTS: "{{ allowed_hosts }}"
           DEBUG: "True"
+          PORT: "{{ app_port }}"
         published_ports:
           - "7002:8000"
 
