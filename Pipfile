@@ -7,8 +7,6 @@ verify_ssl = true
 flake8 = "*"
 autopep8 = "*"
 pylint = "*"
-jupyter = "*"
-comlipy = "*"
 coverage = "*"
 
 [packages]
@@ -25,6 +23,7 @@ celery = "==4.4.7"
 django-celery-results = "*"
 django-celery-beat = "*"
 redis = "*"
+gunicorn = "==20.0.4"
 
 [requires]
 python_version = "3.8"
