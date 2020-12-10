@@ -109,7 +109,7 @@ jobs:
         run: |
           ansible-playbook -i contrib/inventory --private-key=contrib/id_rsa.deploy -e "username=${{ github.actor }} password=${{ secrets.GITHUB_TOKEN }}" contrib/staging.yml
   production:
-    if: github.event_name == 'master' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: build
     env:
