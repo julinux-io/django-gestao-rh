@@ -20,18 +20,12 @@ WORKDIR /app
 COPY --chown=djangoapp ./Pipfile* /app/
 COPY --chown=djangoapp ./src/ /app/
 
-RUN mkdir -p /etc/uwsgi/vassals
-COPY ./contrib/gestao_rh.ini /etc/uwsgi/vassals/
-
 USER djangoapp
 
 RUN pipenv --python 3.8
 RUN pipenv sync
 RUN /app/.venv/bin/pip3 install --upgrade pip
-RUN /app/.venv/bin/pip3 install uwsgi
 
 RUN mkdir /app/log
 
-EXPOSE 8000
-
-CMD ["/app/.venv/bin/uwsgi", "--emperor", "/etc/uwsgi/vassals", "--uid", "djangoapp", "--gid", "djangoapp"]
+CMD gunicorn gestao_rh.wsgi:application --bind 0.0.0.0:$PORT
