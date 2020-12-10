@@ -114,11 +114,6 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: build
-    env:
-      ALLOWED_HOSTS: '*.herokuapp.com'
-      SECRET_KEY: ${{ secrets.HEROKU_SECRET_KEY }}
-      DATABASE_URL: ${{ secrets.HEROKU_DATABASE_URL }}
-      DEBUG: "False"
     steps:
       - uses: actions/checkout@v2
       - name: Deploy on Heroku
@@ -133,4 +128,9 @@ jobs:
             ALLOWED_HOSTS
             DATABASE_URL
             DEBUG
+        env:
+          ALLOWED_HOSTS: '*.herokuapp.com'
+          SECRET_KEY: ${{ secrets.HEROKU_SECRET_KEY }}
+          DATABASE_URL: ${{ secrets.HEROKU_DATABASE_URL }}
+          DEBUG: "False"
     
