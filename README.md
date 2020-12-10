@@ -14,6 +14,7 @@ Up all services
 $ ./compose.sh
 ```
 
+
 Down all services
 ```sh
 $ ./compose down
