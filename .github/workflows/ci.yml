@@ -4,6 +4,8 @@ env:
   CONTAINER_NAME: gestao-rh
 
 on:
+  repository_dispatch:
+    types: [build]
   pull_request:
     branches: [dev, master]
   push:
