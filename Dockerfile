@@ -15,8 +15,7 @@ RUN pip install --upgrade pip \
 
 WORKDIR /app
 
-COPY --chown=djangoapp ./Pipfile* /app/
-COPY --chown=djangoapp ./src/ /app/
+COPY --chown=djangoapp ./Pipfile* ./src/ /app/
 
 USER djangoapp
 
