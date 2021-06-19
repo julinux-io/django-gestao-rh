@@ -55,31 +55,36 @@ jobs:
           path: ./src/coverage.xml
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: tests
     steps:
       - uses: actions/checkout@v2
       - uses: satackey/action-docker-layer-caching@v0.0.10
         continue-on-error: true
-      - name: Push to Github Package
-        uses: docker/build-push-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: vespene/django-gestao-rh/${{ env.CONTAINER_NAME }}
-          push: true
-          tags: latest
-          tag_with_ref: true
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }} 
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: julinux/${{ env.CONTAINER_NAME }}
+          context: .
+          platforms: linux/amd64,linux/arm64
           push: true
-          tags: latest
-          tag_with_ref: true
+          tags: |
+            julinux/${{ env.CONTAINER_NAME }}:latest
+            docker.pkg.github.com/vespene/django-gestao-rh/${{ env.CONTAINER_NAME }}:latest
       - uses: actions/download-artifact@v2
         with:
           name: coverage
