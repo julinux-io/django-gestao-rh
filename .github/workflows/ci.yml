@@ -8,9 +8,12 @@ on:
     branches: [dev, master]
   push:
     branches: [dev, master]
+    paths-ignore:
+      - '.vscode/**'
+      - '.editorconfig'
 
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,6 +23,7 @@ jobs:
           python-version: 3.8
       - name: Install Pipenv
         run: |
+          python -m pip install --upgrade pip
           python -m pip install pipenv
           pipenv --python 3.8
       - name: Cache Python Dependencies
@@ -47,10 +51,10 @@ jobs:
         with:
           name: coverage
           path: ./src/coverage.xml
-        
   build:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+    needs: tests
     steps:
       - uses: actions/checkout@v2
       - uses: satackey/action-docker-layer-caching@v0.0.10
@@ -135,4 +139,3 @@ jobs:
           DATABASE_URL: ${{ secrets.HEROKU_DATABASE_URL }}
           CELERY_BROKER_URL: ${{ secrets.HEROKU_REDIS_URL }}
           DEBUG: "False"
-    
