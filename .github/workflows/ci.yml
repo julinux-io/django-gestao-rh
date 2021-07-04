@@ -16,7 +16,7 @@ on:
 
 jobs:
   tests:
-    runs-on: [delta-1]
+    runs-on: [self-hosted, Linux, X64]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
