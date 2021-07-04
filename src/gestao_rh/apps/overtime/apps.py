@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class OvertimeConfig(AppConfig):
-    name = 'overtime'
+    name = 'gestao_rh.apps.overtime'
