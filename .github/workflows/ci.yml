@@ -77,7 +77,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
+          registry: ghcr.io
       - name: Push to Registry
         uses: docker/build-push-action@v2
         with:
@@ -86,7 +86,7 @@ jobs:
           push: true
           tags: |
             julinux/${{ env.CONTAINER_NAME }}:latest
-            docker.pkg.github.com/vespene/django-gestao-rh/${{ env.CONTAINER_NAME }}:latest
+            ghcr.io/vespene/django-gestao-rh/${{ env.CONTAINER_NAME }}:latest
       - uses: actions/download-artifact@v2
         with:
           name: coverage
