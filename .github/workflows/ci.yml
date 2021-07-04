@@ -18,6 +18,9 @@ jobs:
   tests:
     runs-on: self-hosted
     steps:
+      - name: Install python dependencies
+        run: |
+          sudo apt install -y libpq-dev python3-dev
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
