@@ -19,11 +19,8 @@ django-extensions = "*"
 xhtml2pdf = "*"
 openpyxl = "*"
 djangorestframework = "*"
-celery = "==4.4.7"
+celery = "*"
 django-celery-results = "*"
 django-celery-beat = "*"
 redis = "*"
 gunicorn = "==20.0.4"
-
-[requires]
-python_version = "3.8"
