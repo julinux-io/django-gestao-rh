@@ -1,11 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage("Build") {
+    stage("Pre-Build") {
       steps {
-        pwd
-        env
-        docker container ls
+        sh 'env'
+      }
+    }
+    stage("Build") {
+      agent {
+        docker {
+        image 'python:3.9.10'
+    }
+      }
+      steps {
+        sh 'pip3 install pipenv'
+        sh 'pipenv install'
       }
     }
   }
