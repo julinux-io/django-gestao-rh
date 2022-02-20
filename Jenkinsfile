@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage("Build") {
       steps {
-        echo $PWD
+        pwd
+        env
+        docker container ls
       }
     }
   }
