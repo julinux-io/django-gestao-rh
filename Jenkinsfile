@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage("Pre-Build") {
-      steps {
-        sh 'env'
-      }
-    }
     stage("Build") {
       steps {
         sh '''
@@ -16,6 +11,11 @@ pipeline {
         fi
         '''
       }
+    }
+  }
+  post {
+    success {
+      sh 'docker rmi --force julinux/django-gestao-app:latest'
     }
   }
 }
