@@ -7,14 +7,14 @@ pipeline {
       }
     }
     stage("Build") {
-      agent {
-        docker {
-        image 'python:3.9.10'
-    }
-      }
       steps {
-        sh 'pip3 install pipenv'
-        sh 'pipenv install'
+        sh '''
+        echo "Starting build"
+        if `ls Dockerfile &> /dev/null`; then
+          echo "Building Docker Image..."
+          docker build -t julinux/django-gestao-app:latest .
+        fi
+        '''
       }
     }
   }
